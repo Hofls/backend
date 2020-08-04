@@ -14,4 +14,4 @@ Technology stack:
 #### To debug:
 * `npm run debug`
 * In google chrome open `chrome://inspect/#devices` and choose `Open dedicated DevTools for Node`
-* Add folder with source code in list `Sources`, set breakpoints
+* Go to `Sources => Node`, set breakpoints
