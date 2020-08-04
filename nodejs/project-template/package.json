@@ -1,0 +1,14 @@
+{
+  "scripts": {
+    "launch": "npm run linter && npm run prettify && npm run test && node src/main.js",
+    "test": "mocha tests --timeout 10000",
+    "linter": "eslint src tests --ext js",
+    "prettify": "prettier --write \"**/*.js\" \"**/*.html\""
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "5.15.3",
+    "mocha": "6.0.2",
+    "prettier": "1.16.4"
+  }
+}
