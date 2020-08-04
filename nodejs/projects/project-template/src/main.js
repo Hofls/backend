@@ -1,3 +1,6 @@
 const messenger = require("./messenger");
 
-console.log(messenger.getMessage());
+setInterval(function() {
+    var date = new Date();
+    console.log(messenger.getMessage());
+}, 5000);

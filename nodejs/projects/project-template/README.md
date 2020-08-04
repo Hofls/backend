@@ -7,6 +7,11 @@ Technology stack:
 * `Prettier` to format code
 * `Mocha` to run tests
 
-# How to build/run
+#### To build/run:
 * `npm install`
-* `npm run launch`
+* `npm run launch` or `npm run launch_fast`
+
+#### To debug:
+* `npm run debug`
+* In google chrome open `chrome://inspect/#devices` and choose `Open dedicated DevTools for Node`
+* Add folder with source code in list `Sources`, set breakpoints
