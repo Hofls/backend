@@ -1,6 +1,7 @@
 {
   "scripts": {
     "launch": "npm run linter && npm run prettify && npm run test && node src/main.js",
+    "launch_fast": "node src/main.js",
     "test": "mocha tests --timeout 10000",
     "linter": "eslint src tests --ext js",
     "prettify": "prettier --write \"**/*.js\" \"**/*.html\""
