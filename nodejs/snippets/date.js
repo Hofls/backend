@@ -12,7 +12,7 @@ function dateToString() {
 }
 
 function daysDifference() {
-    let momentA = moment("01.10.2015", "DD.MM.YYYY");
-    let momentB = moment("12.11.2015", "DD.MM.YYYY");
+    let momentA = moment("01.08.2020", "DD.MM.YYYY");
+    let momentB = moment(new Date());
     let duration = moment.duration(momentB.diff(momentA)).asDays();
 }
