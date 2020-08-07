@@ -1,7 +1,9 @@
 {
   "scripts": {
+    "prod": "cross-env NODE_PROFILE='prod' npm run launch",
+    "dev": "cross-env NODE_PROFILE='dev' npm run launch",
+    "dev_fast": "cross-env NODE_PROFILE='dev' node src/main.js",
     "launch": "npm run linter && npm run prettify && npm run test && node src/main.js",
-    "launch_fast": "node src/main.js",
     "debug": "node --inspect src/main.js",
     "test": "mocha tests --timeout 10000",
     "linter": "eslint src tests --ext js",
@@ -9,6 +11,7 @@
   },
   "dependencies": {},
   "devDependencies": {
+    "cross-env": "^5.2.0",
     "eslint": "5.15.3",
     "mocha": "6.0.2",
     "prettier": "1.16.4"

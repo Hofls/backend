@@ -1,5 +1,4 @@
 const messenger = require("./messenger");
 
-setInterval(function() {
-    console.log(messenger.getMessage());
-}, 5000);
+console.log(messenger.getMessage());
+console.log(`Current profile is ${process.env.NODE_PROFILE}`);

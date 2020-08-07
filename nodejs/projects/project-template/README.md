@@ -9,7 +9,7 @@ Technology stack:
 
 #### To build/run:
 * `npm install`
-* `npm run launch` or `npm run launch_fast`
+* `npm run dev` or `npm run dev_fast`
 
 #### To debug:
 * `npm run debug`
