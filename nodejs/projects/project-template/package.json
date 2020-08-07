@@ -11,7 +11,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "cross-env": "^5.2.0",
+    "cross-env": "5.2.0",
     "eslint": "5.15.3",
     "mocha": "6.0.2",
     "prettier": "1.16.4"
