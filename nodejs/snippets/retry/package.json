@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "launch": "node src/main.js"
+  }
+}
