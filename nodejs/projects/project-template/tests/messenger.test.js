@@ -1,9 +1,9 @@
 const messenger = require("../src/messenger");
 
 test('messenger - getMessage', () => {
-  expect("Hello world!").toEqual(messenger.getMessage());
+  expect(messenger.getMessage()).toEqual("Hello world!");
 });
 
 test('messenger - getMessage', async () => {
-  expect("Hello async!").toEqual(await messenger.getAsyncMessage());
+  expect(await messenger.getAsyncMessage()).toEqual("Hello async!");
 });
