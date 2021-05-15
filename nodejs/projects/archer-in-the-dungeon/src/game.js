@@ -3,6 +3,7 @@ const items = require("./items");
 module.exports = {
 
     executeTurn: function (state) {
+        // Start/Restart
         if (state.newGame) {
             state.arrows = ['огня'];
             state.enemies = ['ледяной'];
@@ -11,7 +12,13 @@ module.exports = {
             return state;
         }
 
-        // miss:
+        // Arrow doesn't exist
+        if (!items.findArrowByUserAction(state.user_action)) {
+            state.responseText = `Вы сказали "${state.user_action}". Выберите стрелу, например "Стрела огня"`;
+            return state;
+        }
+
+        // Miss
         if (!items.isEnemyDead(state.active_enemy_type, state.user_action)) {
             let arrowType = items.findArrowByEnemy(state.active_enemy_type).arrow;
             state.responseText = `Вас победил ${state.active_enemy}. Нужно было использовать стрелу ${arrowType}`;
@@ -21,15 +28,24 @@ module.exports = {
             return state;
         }
 
-        // hit:
+        // Hit
         utils.remove(state.enemies, state.active_enemy_type);
-        if (state.final_enemy) {
-            state.arrows.push('Льда');
-            state.enemies.push('Огненный'); // генерируем список врагов на основе стрел
-            state.active_enemy = 'Огненный'; // страж
-            state.responseText = 'Найдена новая ARROW_NAME, впереди страж стрелы - MOB_NAME';
-        } else {
-            state.responseText = 'Враг повержен, впереди - MOB_NAME';
+        if (state.final_enemy) { // Last enemy
+            let newArrow = items.pickNewArrow(state.arrows);
+            if (!newArrow) { // Dungeon completed
+                state.responseText = `Отлично сыграно! Подземелье пройдено, все сокровища ваши!`;
+                state.arrows = [];
+                state.enemies = [];
+                state.active_enemy = '';
+                return state;
+            }
+            state.arrows.push(newArrow.arrow);
+            state.enemies.push(newArrow.enemyType);
+            state.active_enemy = `${newArrow.enemyType} ${items.getRandomEnemyName()}`;
+            state.responseText = `Найдена новая стрела ${newArrow.arrow}. Впереди страж стрелы - MOB_NAME`;
+        } else { // Normal enemy
+            state.active_enemy = items.pickEnemy(state.enemies);
+            state.responseText = `Враг повержен, впереди - ${state.active_enemy}`;
             return state;
         }
     }

@@ -8,6 +8,12 @@ module.exports = {
         return text.substr(0, text.indexOf(' '));
     },
 
+    removeEach: function (array, items) {
+        for (let item of items) {
+            this.remove(array, item);
+        }
+    },
+
     remove: function (array, item) {
         let index = array.indexOf(item);
         if (index !== -1) {

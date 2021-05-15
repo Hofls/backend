@@ -2,9 +2,9 @@ const utils = require("./utils");
 
 module.exports = {
 
-    isEnemyDead: function(enemyType, actualArrow) {
+    isEnemyDead: function(enemyType, userAction) {
         let expectedArrow = this.findArrowByEnemy(enemyType).arrow;
-        return actualArrow.includes(expectedArrow);
+        return userAction.includes(expectedArrow);
     },
 
     pickEnemy: function(enemies) {
@@ -13,9 +13,27 @@ module.exports = {
         return `${type} ${name}`;
     },
 
+    pickNewArrow: function(oldArrows) {
+        let newArrows = utils.removeEach(this.getArrows(), oldArrows);
+        if (newArrows) {
+            return utils.pickRandom(newArrows);
+        } else {
+            return null;
+        }
+    },
+
     findArrowByEnemy(enemyType) {
         for (let arrow of this.getArrows()) {
             if (arrow.enemyType === enemyType) {
+                return arrow;
+            }
+        }
+        return null;
+    },
+
+    findArrowByUserAction(userAction) {
+        for (let arrow of this.getArrows()) {
+            if (userAction.includes(arrow.arrow)) {
                 return arrow;
             }
         }
@@ -29,6 +47,10 @@ module.exports = {
         arrows.push({arrow: 'тьмы', enemyType: 'светлый'});
         arrows.push({arrow: 'света', enemyType: 'темный'});
         return arrows;
+    },
+
+    getRandomEnemyName: function () {
+        return utils.pickRandom(this.getEnemyNames());
     },
 
     getEnemyNames: function () {
