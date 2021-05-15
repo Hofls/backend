@@ -2,6 +2,14 @@ const utils = require("./utils");
 
 module.exports = {
 
+    createEnemies: function(arrowNames) {
+        let enemies = [];
+        for (let arrowName of arrowNames) {
+            enemies.push(this.findArrowByName(arrowName).enemyType);
+        }
+        return enemies;
+    },
+
     isEnemyDead: function(enemyType, userAction) {
         let expectedArrow = this.findArrowByEnemy(enemyType).arrow;
         return userAction.includes(expectedArrow);

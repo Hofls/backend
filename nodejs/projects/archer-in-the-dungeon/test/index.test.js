@@ -15,7 +15,7 @@ test('Begin game', async () => {
 test('Restart game', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда'],
+      arrows: ['огня', 'льда', 'тьмы'],
       enemies: ['ледяной', 'огненный'],
       active_enemy: 'огненный',
     }
@@ -36,7 +36,7 @@ test('Restart game', async () => {
 test('Normal enemy. Shoot with wrong arrow', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда'],
+      arrows: ['огня', 'льда', 'тьмы'],
       enemies: ['ледяной', 'огненный'],
       active_enemy: 'огненный орк',
     }
@@ -56,7 +56,7 @@ test('Normal enemy. Shoot with wrong arrow', async () => {
 test('Normal enemy. Shoot with correct arrow', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда'],
+      arrows: ['огня', 'льда', 'тьмы'],
       enemies: ['ледяной', 'огненный'],
       active_enemy: 'огненный гоблин',
     }
@@ -67,7 +67,7 @@ test('Normal enemy. Shoot with correct arrow', async () => {
   let event = {request: request, state: state}
   let response = await index.handler(event);
 
-  expect(response.user_state_update.arrows).toEqual(['огня', 'льда']);
+  expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной']);
   expect(response.user_state_update.active_enemy).toContain('ледяной');
   expect(response.response.text).toContain("Враг повержен, впереди - ледяной");
@@ -76,7 +76,7 @@ test('Normal enemy. Shoot with correct arrow', async () => {
 test('Normal enemy. Unknown arrow', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда'],
+      arrows: ['огня', 'льда', 'тьмы'],
       enemies: ['ледяной', 'огненный'],
       active_enemy: 'огненный орк',
     }
@@ -87,10 +87,11 @@ test('Normal enemy. Unknown arrow', async () => {
   let event = {request: request, state: state}
   let response = await index.handler(event);
 
-  expect(response.user_state_update.arrows).toEqual(['огня', 'льда']);
+  expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный']);
   expect(response.user_state_update.active_enemy).toContain('огненный');
-  expect(response.response.text).toEqual("Вы сказали \"перекатиться в укрытие\". Выберите стрелу, например \"Стрела огня\"");
+  expect(response.response.text).toContain('Впереди - огненный');
+  expect(response.response.text).toContain("вы сказали \"перекатиться в укрытие\". Выберите стрелу, например \"Стрела огня\"");
 });
 
 test('Complete dungeon', async () => {
@@ -128,9 +129,30 @@ test('Last enemy. Shoot with correct arrow', async () => {
   let response = await index.handler(event);
 
   expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'света', 'тьмы']);
-  expect(response.user_state_update.enemies).toEqual(['светлый']);
+  expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный', 'темный', 'светлый']);
   expect(response.user_state_update.active_enemy).toContain('светлый');
   expect(response.response.text).toContain("Враг повержен, найдена стрела тьмы. Впереди страж стрелы - светлый ");
+});
+
+test('First enemy. Shoot with wrong arrow', async () => {
+  let state = {
+    user: {
+      arrows: ['огня', 'льда', 'тьмы'],
+      enemies: ['ледяной', 'огненный', 'светлый'],
+      active_enemy: 'светлый гоблин',
+    }
+  }
+  let request = {
+    original_utterance: 'Стрела огня'
+  }
+  let event = {request: request, state: state}
+  let response = await index.handler(event);
+
+  expect(response.user_state_update.arrows).toEqual(['огня', 'льда',  'тьмы']);
+  expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный', 'светлый']);
+  expect(response.user_state_update.active_enemy).toContain('светлый');
+  expect(response.response.text).toContain("Впереди - светлый ");
+  expect(response.response.text).toContain(", используйте стрелу тьмы");
 });
 
 // guardian. miss
