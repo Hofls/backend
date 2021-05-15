@@ -13,7 +13,7 @@ module.exports = {
         }
 
         // Arrow doesn't exist
-        if (!items.findArrowByUserAction(state.user_action)) {
+        if (!items.findArrowByName(state.user_action)) {
             state.responseText = `Вы сказали "${state.user_action}". Выберите стрелу, например "Стрела огня"`;
             return state;
         }
@@ -42,7 +42,8 @@ module.exports = {
             state.arrows.push(newArrow.arrow);
             state.enemies.push(newArrow.enemyType);
             state.active_enemy = `${newArrow.enemyType} ${items.getRandomEnemyName()}`;
-            state.responseText = `Найдена новая стрела ${newArrow.arrow}. Впереди страж стрелы - MOB_NAME`;
+            state.responseText = `Враг повержен, найдена стрела ${newArrow.arrow}. Впереди страж стрелы - ${state.active_enemy}`;
+            return state;
         } else { // Normal enemy
             state.active_enemy = items.pickEnemy(state.enemies);
             state.responseText = `Враг повержен, впереди - ${state.active_enemy}`;

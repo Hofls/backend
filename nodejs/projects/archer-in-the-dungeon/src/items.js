@@ -14,9 +14,9 @@ module.exports = {
     },
 
     pickNewArrow: function(oldArrows) {
-        let newArrows = utils.removeEach(this.getArrows(), oldArrows);
-        if (newArrows) {
-            return utils.pickRandom(newArrows);
+        let newArrows = utils.removeEach(this.getArrowsNames(), oldArrows);
+        if (newArrows && newArrows.length > 0) {
+            return this.findArrowByName(utils.pickRandom(newArrows));
         } else {
             return null;
         }
@@ -31,7 +31,7 @@ module.exports = {
         return null;
     },
 
-    findArrowByUserAction(userAction) {
+    findArrowByName(userAction) {
         for (let arrow of this.getArrows()) {
             if (userAction.includes(arrow.arrow)) {
                 return arrow;
@@ -39,6 +39,15 @@ module.exports = {
         }
         return null;
     },
+
+    getArrowsNames: function () {
+        let arrowNames = [];
+        for (let arrow of this.getArrows()) {
+            arrowNames.push(arrow.arrow);
+        }
+        return arrowNames;
+    },
+
 
     getArrows: function () {
         let arrows = [];

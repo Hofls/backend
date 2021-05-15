@@ -96,7 +96,7 @@ test('Normal enemy. Unknown arrow', async () => {
 test('Complete dungeon', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда', 'тьмы', 'света'],
+      arrows: items.getArrowsNames(),
       enemies: ['огненный'],
       active_enemy: 'огненный гоблин',
     }
@@ -113,8 +113,25 @@ test('Complete dungeon', async () => {
   expect(response.response.text).toEqual("Отлично сыграно! Подземелье пройдено, все сокровища ваши!");
 });
 
+test('Last enemy. Shoot with correct arrow', async () => {
+  let state = {
+    user: {
+      arrows: ['огня', 'льда', 'света'],
+      enemies: ['огненный'],
+      active_enemy: 'огненный гоблин',
+    }
+  }
+  let request = {
+    original_utterance: 'Стрела льда'
+  }
+  let event = {request: request, state: state}
+  let response = await index.handler(event);
 
-// unknown arrow
+  expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'света', 'тьмы']);
+  expect(response.user_state_update.enemies).toEqual(['светлый']);
+  expect(response.user_state_update.active_enemy).toContain('светлый');
+  expect(response.response.text).toContain("Враг повержен, найдена стрела тьмы. Впереди страж стрелы - светлый ");
+});
+
 // guardian. miss
 // guardian. hit
-// dungeon completed

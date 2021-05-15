@@ -12,6 +12,7 @@ module.exports = {
         for (let item of items) {
             this.remove(array, item);
         }
+        return array;
     },
 
     remove: function (array, item) {
