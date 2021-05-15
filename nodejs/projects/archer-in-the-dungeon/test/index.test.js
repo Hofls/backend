@@ -70,7 +70,7 @@ test('Normal enemy. Shoot with correct arrow', async () => {
   expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной']);
   expect(response.user_state_update.active_enemy).toContain('ледяной');
-  expect(response.response.text).toContain("Враг повержен, впереди ледяной");
+  expect(response.response.text).toContain("впереди ледяной");
 });
 
 test('Normal enemy. Unknown arrow', async () => {
@@ -131,7 +131,7 @@ test('Last enemy. Shoot with correct arrow', async () => {
   expect(response.user_state_update.arrows).toEqual(items.getArrowsNames());
   expect(response.user_state_update.enemies).toEqual(items.getEnemyTypes());
   expect(response.user_state_update.active_enemy).toContain('умный');
-  expect(response.response.text).toContain("Враг повержен, найдена стрела безумия. Впереди страж стрелы - умный ");
+  expect(response.response.text).toContain("найдена стрела безумия. Впереди страж стрелы - умный ");
 });
 
 test('First enemy. Shoot with wrong arrow', async () => {

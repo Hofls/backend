@@ -50,11 +50,11 @@ module.exports = {
             state.arrows.push(newArrow.arrow);
             state.enemies = (items.createEnemies(state.arrows));
             state.active_enemy = `${newArrow.enemyType} ${items.getRandomEnemyName()}`;
-            state.responseText = `Враг повержен, найдена стрела ${newArrow.arrow}. Впереди страж стрелы - ${state.active_enemy}`;
+            state.responseText = `${items.getVictoryMessage()}, найдена стрела ${newArrow.arrow}. Впереди страж стрелы - ${state.active_enemy}`;
             return state;
         } else { // Normal enemy
             state.active_enemy = items.pickEnemy(state.enemies);
-            state.responseText = `Враг повержен, впереди ${state.active_enemy}`;
+            state.responseText = `${items.getVictoryMessage()}, впереди ${state.active_enemy}`;
             return state;
         }
     }

@@ -64,6 +64,16 @@ module.exports = {
         return arrowNames;
     },
 
+    getRandomEnemyName: function () {
+        return utils.pickRandom(this.getEnemyNames());
+    },
+
+    getVictoryMessage: function () {
+        let object = utils.pickRandom(this.getVictoryObject());
+        let action = utils.pickRandom(this.getVictoryAction());
+        return `${object} ${action}`
+    },
+
     getArrows: function () {
         let arrows = [];
         arrows.push({arrow: 'огня', enemyType: 'ледяной'});
@@ -86,21 +96,26 @@ module.exports = {
         arrows.push({arrow: 'золота', enemyType: 'алчный'})
         arrows.push({arrow: 'болота', enemyType: 'быстрый'});
         arrows.push({arrow: 'железа', enemyType: 'магнитный'});
+        arrows.push({arrow: 'времени', enemyType: 'древний'});
+
         arrows.push({arrow: 'безумия', enemyType: 'умный'});
 
         return arrows;
     },
 
-    getRandomEnemyName: function () {
-        return utils.pickRandom(this.getEnemyNames());
-    },
-
     getEnemyNames: function () {
-        return ['гоблин', 'элементаль', 'скелет', 'орк', 'колдун', 'маг', 'вампир', 'разбойник',
+        return ['гоблин', 'элементаль', 'скелет', 'орк', 'колдун', 'маг', 'вампир', 'разбойник', 'громила',
             'гигант', 'зверь', 'гуманоид', 'злодей', 'голем', 'демон', 'оборотень', 'варвар', 'минотавр',
-            'охотник', 'гуль', 'берсерк', 'зомби', 'тролль', 'прислужник', 'паук', 'гремлин', 'василиск'];
+            'охотник', 'гуль', 'берсерк', 'зомби', 'тролль', 'прислужник', 'паук', 'гремлин', 'василиск',
+            'тиран'];
     },
 
+    getVictoryObject: function () {
+        return ['Враг', 'Противник', 'Оппонент', 'Монстр', 'Соперник', 'Злодей', 'Негодяй'];
+    },
 
+    getVictoryAction: function () {
+        return ['повержен', 'побежден', 'сбежал', 'без сознания', 'поражён', 'разбит', 'уничтожен', 'исчез', 'сломлен', 'скрылся'];
+    }
 
 }
