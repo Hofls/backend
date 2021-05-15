@@ -73,7 +73,7 @@ module.exports = {
         arrows.push({arrow: 'грома', enemyType: 'прислушивающийся'});
         arrows.push({arrow: 'порядка', enemyType: 'хаотичный'});
         arrows.push({arrow: 'пробивания', enemyType: 'бронированный'});
-        arrows.push({arrow: 'страха', enemyType: 'смелый'});
+        arrows.push({arrow: 'ужаса', enemyType: 'пугливый'});
         arrows.push({arrow: 'земли', enemyType: 'летающий'});
         arrows.push({arrow: 'яда', enemyType: 'кровавый'});
         arrows.push({arrow: 'ослепления', enemyType: 'одноглазый'});
@@ -83,7 +83,9 @@ module.exports = {
         arrows.push({arrow: 'ястреба', enemyType: 'мышиный'});
         arrows.push({arrow: 'иллюзий', enemyType: 'глупый'});
         arrows.push({arrow: 'гравитации', enemyType: 'тяжелый'});
-        arrows.push({arrow: 'золота', enemyType: 'алчный'});
+        arrows.push({arrow: 'золота', enemyType: 'алчный'})
+        arrows.push({arrow: 'болота', enemyType: 'быстрый'});
+        arrows.push({arrow: 'железа', enemyType: 'магнитный'});
         arrows.push({arrow: 'безумия', enemyType: 'умный'});
 
         return arrows;
@@ -96,7 +98,7 @@ module.exports = {
     getEnemyNames: function () {
         return ['гоблин', 'элементаль', 'скелет', 'орк', 'колдун', 'маг', 'вампир', 'разбойник',
             'гигант', 'зверь', 'гуманоид', 'злодей', 'голем', 'демон', 'оборотень', 'варвар', 'минотавр',
-            'охотник', 'гуль', 'берсерк', 'зомби', 'тролль', 'прислужник', 'паук'];
+            'охотник', 'гуль', 'берсерк', 'зомби', 'тролль', 'прислужник', 'паук', 'гремлин', 'василиск'];
     },
 
 
