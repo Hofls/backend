@@ -9,7 +9,9 @@ module.exports = {
         let restart = userAction === 'начать заново';
         if (newGame || restart) {
             return {
-                newGame: true
+                newGame: true,
+                version: version,
+                session: session
             }
         } else {
             return {

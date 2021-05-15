@@ -14,7 +14,7 @@ module.exports = {
 
         // Arrow doesn't exist
         if (!items.findArrowByName(state.user_action)) {
-            state.responseText = `Впереди - ${state.active_enemy}, вы сказали "${state.user_action}". Выберите стрелу, например "Стрела огня"`;
+            state.responseText = `Впереди ${state.active_enemy}. Выберите стрелу, например "Стрела огня"`;
             return state;
         }
 
@@ -23,7 +23,7 @@ module.exports = {
             let arrowType = items.findArrowByEnemy(state.active_enemy_type).arrow;
             // New arrow (guardian)
             if (state.arrows.length === state.enemies.length) {
-                state.responseText = `Впереди - ${state.active_enemy}, используйте стрелу ${arrowType}`;
+                state.responseText = `Впереди ${state.active_enemy}, используйте стрелу ${arrowType}`;
                 return state;
             }
 
@@ -54,7 +54,7 @@ module.exports = {
             return state;
         } else { // Normal enemy
             state.active_enemy = items.pickEnemy(state.enemies);
-            state.responseText = `Враг повержен, впереди - ${state.active_enemy}`;
+            state.responseText = `Враг повержен, впереди ${state.active_enemy}`;
             return state;
         }
     }

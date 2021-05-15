@@ -70,7 +70,7 @@ test('Normal enemy. Shoot with correct arrow', async () => {
   expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной']);
   expect(response.user_state_update.active_enemy).toContain('ледяной');
-  expect(response.response.text).toContain("Враг повержен, впереди - ледяной");
+  expect(response.response.text).toContain("Враг повержен, впереди ледяной");
 });
 
 test('Normal enemy. Unknown arrow', async () => {
@@ -90,8 +90,8 @@ test('Normal enemy. Unknown arrow', async () => {
   expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный']);
   expect(response.user_state_update.active_enemy).toContain('огненный');
-  expect(response.response.text).toContain('Впереди - огненный');
-  expect(response.response.text).toContain("вы сказали \"перекатиться в укрытие\". Выберите стрелу, например \"Стрела огня\"");
+  expect(response.response.text).toContain('Впереди огненный');
+  expect(response.response.text).toContain(". Выберите стрелу, например \"Стрела огня\"");
 });
 
 test('Complete dungeon', async () => {
@@ -117,7 +117,7 @@ test('Complete dungeon', async () => {
 test('Last enemy. Shoot with correct arrow', async () => {
   let state = {
     user: {
-      arrows: ['огня', 'льда', 'света'],
+      arrows: items.getArrowsNames().slice(0, items.getArrowsNames().length - 1),
       enemies: ['огненный'],
       active_enemy: 'огненный гоблин',
     }
@@ -128,10 +128,10 @@ test('Last enemy. Shoot with correct arrow', async () => {
   let event = {request: request, state: state}
   let response = await index.handler(event);
 
-  expect(response.user_state_update.arrows).toEqual(['огня', 'льда', 'света', 'тьмы']);
-  expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный', 'темный', 'светлый']);
-  expect(response.user_state_update.active_enemy).toContain('светлый');
-  expect(response.response.text).toContain("Враг повержен, найдена стрела тьмы. Впереди страж стрелы - светлый ");
+  expect(response.user_state_update.arrows).toEqual(items.getArrowsNames());
+  expect(response.user_state_update.enemies).toEqual(items.getEnemyTypes());
+  expect(response.user_state_update.active_enemy).toContain('умный');
+  expect(response.response.text).toContain("Враг повержен, найдена стрела безумия. Впереди страж стрелы - умный ");
 });
 
 test('First enemy. Shoot with wrong arrow', async () => {
@@ -151,7 +151,7 @@ test('First enemy. Shoot with wrong arrow', async () => {
   expect(response.user_state_update.arrows).toEqual(['огня', 'льда',  'тьмы']);
   expect(response.user_state_update.enemies).toEqual(['ледяной', 'огненный', 'светлый']);
   expect(response.user_state_update.active_enemy).toContain('светлый');
-  expect(response.response.text).toContain("Впереди - светлый ");
+  expect(response.response.text).toContain("Впереди светлый ");
   expect(response.response.text).toContain(", используйте стрелу тьмы");
 });
 
