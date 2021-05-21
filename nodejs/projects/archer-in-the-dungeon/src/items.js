@@ -87,7 +87,7 @@ module.exports = {
         arrows.push({arrow: 'земли', enemyType: 'летающий'});
         arrows.push({arrow: 'яда', enemyType: 'кровавый'});
         arrows.push({arrow: 'ослепления', enemyType: 'одноглазый'});
-        arrows.push({arrow: 'камня', enemyType: 'стекляный'});
+        arrows.push({arrow: 'камня', enemyType: 'стеклянный'});
         arrows.push({arrow: 'ярости', enemyType: 'спокойный'});
         arrows.push({arrow: 'экзорцизма', enemyType: 'призрачный'});
         arrows.push({arrow: 'ястреба', enemyType: 'мышиный'});
