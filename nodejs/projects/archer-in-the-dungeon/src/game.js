@@ -3,12 +3,21 @@ const items = require("./items");
 module.exports = {
 
     executeTurn: function (state) {
+        // Help
+        if (state.help) {
+            state.responseText = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов. ` +
+                `У каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой. ` +
+                `Для выстрела произнесите название стрелы, например "Стрела огня".`;
+            return state;
+        }
+
         // Start/Restart
         if (state.newGame) {
             state.arrows = ['огня'];
             state.enemies = items.createEnemies(state.arrows);
             state.active_enemy = items.pickEnemy(state.enemies);
-            state.responseText = `Вы взяли стрелу ${state.arrows[0]} и спустились в подземелье. Впереди ${state.active_enemy}`;
+            state.responseText = `Вы взяли стрелу ${state.arrows[0]} и спустились в подземелье. ` +
+                `Впереди ${state.active_enemy}. Чтобы выстрелить во врага, скажите "Стрела ${state.arrows[0]}"`;
             return state;
         }
 

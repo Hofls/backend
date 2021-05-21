@@ -6,10 +6,16 @@ module.exports = {
         const {version, session, request, state} = event;
         let userAction = request.original_utterance ? request.original_utterance.toLowerCase() : '';
         let newGame = !state.user || !state.user.arrows || state.user.arrows.length === 0;
-        let restart = userAction === 'начать заново';
-        if (newGame || restart) {
+        let help = userAction.includes('помощь') || userAction.includes('что ты умеешь');
+        if (newGame) {
             return {
                 newGame: true,
+                version: version,
+                session: session
+            }
+        } else if (help) {
+            return {
+                help: true,
                 version: version,
                 session: session
             }

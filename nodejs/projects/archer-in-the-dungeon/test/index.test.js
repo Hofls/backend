@@ -12,25 +12,47 @@ test('Begin game', async () => {
       .toContain("Вы взяли стрелу огня и спустились в подземелье. Впереди ледяной");
 });
 
-test('Restart game', async () => {
+test('Help 1', async () => {
   let state = {
     user: {
       arrows: ['огня', 'льда', 'тьмы'],
       enemies: ['ледяной', 'огненный'],
-      active_enemy: 'огненный',
+      active_enemy: 'огненный гоблин',
     }
   }
   let request = {
-    original_utterance: 'Начать заново'
+    original_utterance: 'мне нужна помощь'
   }
   let event = {request: request, state: state}
   let response = await index.handler(event);
 
-  expect(response.user_state_update.arrows).toEqual(['огня']);
-  expect(response.user_state_update.enemies).toEqual(['ледяной']);
-  expect(response.user_state_update.active_enemy).toContain('ледяной');
-  expect(response.response.text)
-      .toContain("Вы взяли стрелу огня и спустились в подземелье. Впереди ледяной");
+  expect(response.user_state_update.arrows).toEqual(undefined);
+  expect(response.user_state_update.enemies).toEqual(undefined);
+  expect(response.user_state_update.active_enemy).toEqual(undefined);
+  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов. У каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой. Для выстрела произнесите название стрелы, например "Стрела огня".`;
+  expect(response.response.text).toEqual(helpMessage);
+});
+
+
+test('Help 2', async () => {
+  let state = {
+    user: {
+      arrows: ['огня', 'льда', 'тьмы'],
+      enemies: ['ледяной', 'огненный'],
+      active_enemy: 'огненный гоблин',
+    }
+  }
+  let request = {
+    original_utterance: 'скажи что ты умеешь'
+  }
+  let event = {request: request, state: state}
+  let response = await index.handler(event);
+
+  expect(response.user_state_update.arrows).toEqual(undefined);
+  expect(response.user_state_update.enemies).toEqual(undefined);
+  expect(response.user_state_update.active_enemy).toEqual(undefined);
+  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов. У каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой. Для выстрела произнесите название стрелы, например "Стрела огня".`;
+  expect(response.response.text).toEqual(helpMessage);
 });
 
 test('Normal enemy. Shoot with wrong arrow', async () => {
