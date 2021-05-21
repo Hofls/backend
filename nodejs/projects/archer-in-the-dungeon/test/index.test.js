@@ -29,7 +29,7 @@ test('Help 1', async () => {
   expect(response.user_state_update.arrows).toEqual(undefined);
   expect(response.user_state_update.enemies).toEqual(undefined);
   expect(response.user_state_update.active_enemy).toEqual(undefined);
-  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов. У каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой. Для выстрела произнесите название стрелы, например "Стрела огня".`;
+  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов.\nУ каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой.\nДля выстрела произнесите название стрелы, например "Стрела огня".`;
   expect(response.response.text).toEqual(helpMessage);
 });
 
@@ -51,7 +51,7 @@ test('Help 2', async () => {
   expect(response.user_state_update.arrows).toEqual(undefined);
   expect(response.user_state_update.enemies).toEqual(undefined);
   expect(response.user_state_update.active_enemy).toEqual(undefined);
-  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов. У каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой. Для выстрела произнесите название стрелы, например "Стрела огня".`;
+  let helpMessage = `Вы играете за лучника. Исследуя пещеру будете находить новые стрелы и встречать новых врагов.\nУ каждого врага есть уязвимость, например ледяного элементаля можно победить только огненной стрелой.\nДля выстрела произнесите название стрелы, например "Стрела огня".`;
   expect(response.response.text).toEqual(helpMessage);
 });
 

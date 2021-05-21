@@ -7,15 +7,15 @@ module.exports = {
         let userAction = request.original_utterance ? request.original_utterance.toLowerCase() : '';
         let newGame = !state.user || !state.user.arrows || state.user.arrows.length === 0;
         let help = userAction.includes('помощь') || userAction.includes('что ты умеешь');
-        if (newGame) {
+        if (help) {
             return {
-                newGame: true,
+                help: true,
                 version: version,
                 session: session
             }
-        } else if (help) {
+        } else if (newGame) {
             return {
-                help: true,
+                newGame: true,
                 version: version,
                 session: session
             }
