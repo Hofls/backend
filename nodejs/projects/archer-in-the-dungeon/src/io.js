@@ -4,8 +4,8 @@ module.exports = {
 
     requestToState: function (event) {
         const {version, session, request, state} = event;
-        let userAction = request.original_utterance ? request.original_utterance.toLowerCase() : '';
-        let newGame = !state.user || !state.user.arrows || state.user.arrows.length === 0;
+        let userAction = request && request.original_utterance ? request.original_utterance.toLowerCase() : '';
+        let newGame = !state || !state.user || !state.user.arrows || state.user.arrows.length === 0;
         let help = userAction.includes('помощь') || userAction.includes('что ты умеешь');
         if (help) {
             return {
