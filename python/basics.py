@@ -7,6 +7,7 @@ spam.remove('Go')
 print('Go' in list) # True
 
 dictionary = {"name": "john", "age": 32}
+dictionary["city"] = "Tokio"
 print(dictionary["name"])
 
 my_set={2, 2, 3, 3} # my_set = set()
