@@ -1,3 +1,5 @@
+# Haven't used this language for a long time? Here is a quick reminder:
+
 #### Data types
 list = ['Hey', 'Ho', 'Lets']
 list.append('Go')
@@ -7,9 +9,9 @@ print('Go' in list) # True
 dictionary = {"name": "john", "age": 32}
 print(dictionary["name"])
 
-set={2, 2, 3, 3}
-set.add(4)
-print(4 in set) # True
+my_set={2, 2, 3, 3} # my_set = set()
+my_set.add(4)
+print(4 in my_set) # True
 
 #### Variable in string
 print(f"{name} welcome to the {area}")
