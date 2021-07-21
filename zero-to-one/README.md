@@ -12,5 +12,5 @@
 * Generate code
     * Humans should manually do only the stuff that computer is unable to do yet.
 * Nothing excessive
-    * Manually wrote line of code? Make sure it's necessary. Maybe app can survive without it?
+    * Want to write some code? Make sure it's necessary. Maybe app can survive without it?
 * ??? Programming language with weak/dynamic typing
