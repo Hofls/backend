@@ -10,7 +10,7 @@ fs.readFile('./package.json',  'utf-8', (err, data) => {
     console.log(data);
 });
 
-// Promise based method:
+// Promise based method (await):
 const readFile = util.promisify(fs.readFile);
 readFile('./package.json', 'utf-8')
     .then(data => {
