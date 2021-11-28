@@ -14,6 +14,10 @@ var list = ArrayList<String>()
 list.add("Hey")
 list.contains("Hey")
 
+var hashMap = HashMap<Int, String>()
+hashMap.put(23, "John")
+println(hashMap.get(23))
+
 var hashSet = HashSet<Int>()
 hashSet.add(7)
 hashSet.add(7)
@@ -84,3 +88,15 @@ val user = User(23, "John")
 println(user) // toString
 println(user.hashCode())
 user.copy()
+
+// Anonymous class
+val status = object {
+    var id = 23
+    var message = "Wrong connection"
+}
+println(status.message)
+
+// Lambda
+val toUppercase = { str: String -> str.uppercase() }
+println(toUppercase("hey"))
+
