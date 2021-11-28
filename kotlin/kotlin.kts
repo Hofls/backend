@@ -10,6 +10,14 @@ val isReady = true
 println("Hello $userName")
 
 // Collections
+var list = ArrayList<String>()
+list.add("Hey")
+list.contains("Hey")
+
+var hashSet = HashSet<Int>()
+hashSet.add(7)
+hashSet.add(7)
+println(hashSet); // prints "7"
 
 // Null safety
 var address = bob?.department?.head?.address
@@ -33,9 +41,26 @@ if (true) {
 }
 
 // Cycles
+for (user in users) {
+    println(user)
+}
 
 // Exceptions
 
+// Comparison
+println(authors == writers) // Structural comparison (true)
+println(authors === writers) // Referential comparison (false)
+
 // Modules (Imports)
+import java.time.LocalDate
+println(LocalDate.now())
 
 // Classes
+open class Person(val name: String) {
+    open fun greet() {
+        println("Hello $name")
+    }
+}
+
+var person = Person("John")
+user.greet()
