@@ -44,8 +44,16 @@ if (true) {
 for (user in users) {
     println(user)
 }
+while (true) {
+    cakesEaten ++
+}
 
 // Exceptions
+try {
+    throw RuntimeException("No internet")
+} catch (ex: Exception) {
+    println(ex)
+}
 
 // Comparison
 println(authors == writers) // Structural comparison (true)
@@ -55,12 +63,24 @@ println(authors === writers) // Referential comparison (false)
 import java.time.LocalDate
 println(LocalDate.now())
 
+// Enum
+enum class State {
+    IDLE, RUNNING
+}
+println(State.RUNNING)
+
 // Classes
 open class Person(val name: String) {
     open fun greet() {
         println("Hello $name")
     }
 }
-
 var person = Person("John")
 user.greet()
+
+// Data Classes
+data class User(val id: Int, val name: String) {}
+val user = User(23, "John")
+println(user) // toString
+println(user.hashCode())
+user.copy()
