@@ -1,4 +1,4 @@
-// Haven't used Kotlin language for a long time? Here is a quick reminder:
+// Haven't used Kotlin for a long time? Here is a quick reminder:
 
 // Data types
 var count = 5

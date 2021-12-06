@@ -1,4 +1,4 @@
-# Haven't used this language for a long time? Here is a quick reminder:
+# Haven't used Python for a long time? Here is a quick reminder:
 
 #### Data types
 count = 5
