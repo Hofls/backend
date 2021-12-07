@@ -82,21 +82,23 @@ open class Person(val name: String) {
 var person = Person("John")
 user.greet()
 
-// Data Classes
-data class User(val id: Int, val name: String) {}
-val user = User(23, "John")
-println(user) // toString
-println(user.hashCode())
-user.copy()
-
-// Anonymous class
+// Anonymous class / JSON object
 val status = object {
     var id = 23
     var message = "Wrong connection"
 }
 println(status.message)
 
-// Lambda
+// Lambda (Anonymous function)
 val toUppercase = { str: String -> str.uppercase() }
 println(toUppercase("hey"))
 
+// ---------------------------------------
+// Kotlin specific:
+
+// Data Classes
+data class User(val id: Int, val name: String) {}
+val user = User(23, "John")
+println(user) // toString
+println(user.hashCode())
+user.copy()

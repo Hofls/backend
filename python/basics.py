@@ -7,7 +7,7 @@ message = "Hello world"
 isReady = True
 
 #### Variable in string
-print(f"{name} welcome to the {area}")
+print(f"Hello {userName}")
 
 #### Collections
 list = ['Hey', 'Ho', 'Lets']
@@ -59,6 +59,10 @@ except Exception as e:
 finally:
     print('final')
 
+#### Comparison
+print(authors == writers) # Structural comparison (true)
+print(authors is writers) # Referential comparison (false)
+
 #### Modules (Imports)
 import monmod
 monmod.printNumbers()
@@ -80,3 +84,10 @@ class Person:
 person = Person("John")
 person.greet()
 
+#### Anonymous class / JSON object
+# Warning! No good way found
+
+#### Lambda (Anonymous function)
+# Warning! Multiline lambdas not supported
+multiply = lambda x: x * 3
+print(multiply(2))
