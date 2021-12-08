@@ -94,6 +94,24 @@ println(status.message)
 val toUppercase = { str: String -> str.uppercase() }
 println(toUppercase("hey"))
 
+// HTTP request/response
+import khttp.get
+val response : Response = khttp.get("http://httpbin.org/get")
+val json : JSONObject = response.jsonObject
+print(obj["origin"])
+
+// Run code in parallel
+// Waits for 0.5 seconds, writes "Hello world!"
+import kotlinx.coroutines.*
+fun helloWorld() = runBlocking {
+    async {write("World!", 500L)}
+    async {write("Hello", 400L)}
+}
+suspend fun write(text: String, delay: Long)  {
+    delay(delay)
+    println(text)
+}
+
 // Naming conventions
 // Folder - advanced/query
 // File - UserRepository.kts
