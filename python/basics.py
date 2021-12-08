@@ -91,3 +91,7 @@ person.greet()
 # Warning! Multiline lambdas not supported
 multiply = lambda x: x * 3
 print(multiply(2))
+
+#### Naming conventions
+# Folder - advanced_query
+# File - user_repository.py

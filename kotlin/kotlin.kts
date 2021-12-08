@@ -19,16 +19,15 @@ hashMap.put(23, "John")
 println(hashMap.get(23))
 
 var hashSet = HashSet<Int>()
-hashSet.add(7)
-hashSet.add(7)
-println(hashSet); // prints "7"
+hashSet.add(7);
+hasSet.contains(7);
 
 // Null safety
 var address = bob?.department?.head?.address
 
 var name: String? = null
 if (name != null) {
-    println(name) // Won't be prited
+    println(name) // Won't be printed
 }
 
 // Functions
@@ -57,11 +56,13 @@ try {
     throw RuntimeException("No internet")
 } catch (ex: Exception) {
     println(ex)
+} finally {
+    println("Done!")
 }
 
 // Comparison
-println(authors == writers) // Structural comparison (true)
-println(authors === writers) // Referential comparison (false)
+println(2 === 3) // True if same reference
+println(obj1 == obj2) // True if all fields are equal (same as .equals())
 
 // Modules (Imports)
 import java.time.LocalDate
@@ -92,6 +93,10 @@ println(status.message)
 // Lambda (Anonymous function)
 val toUppercase = { str: String -> str.uppercase() }
 println(toUppercase("hey"))
+
+// Naming conventions
+// Folder - advanced/query
+// File - UserRepository.kts
 
 // ---------------------------------------
 // Kotlin specific:
