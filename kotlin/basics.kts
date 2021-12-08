@@ -99,18 +99,18 @@ println(toUppercase("hey"))
 import khttp.get
 val response : Response = khttp.get("http://httpbin.org/get")
 val json : JSONObject = response.jsonObject
-print(obj["origin"])
+print(json["origin"])
 
 // Run code in parallel
 // Waits for 0.5 seconds, writes "Hello world!"
 import kotlinx.coroutines.*
-fun helloWorld() = runBlocking {
-    async {write("World!", 500L)}
-    async {write("Hello", 400L)}
-}
 suspend fun write(text: String, delay: Long)  {
     delay(delay)
     println(text)
+}
+fun helloWorld() = runBlocking {
+    async {write("World!", 500L)}
+    async {write("Hello", 400L)}
 }
 
 // Naming conventions
