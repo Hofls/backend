@@ -37,6 +37,7 @@ fun multiply(number: Int): Int {
 multiply(2)
 
 // Conditions
+// # (and, or, !); (&&, ||, !); (==, ===, !=);  (true, false)
 if (true) {
     println("A")
 } else {
