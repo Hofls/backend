@@ -10,29 +10,28 @@ isReady = True
 print(f"Hello {userName}")
 
 #### Collections
-list = ['Hey', 'Ho', 'Lets']
-list.append('Go')
-spam.remove('Go')
-print('Go' in list) # True
+list = ['Lets', 'Go']
+list.append('Hey')
+print('Hey' in list) # True
 
-dictionary = {"name": "john", "age": 32}
-dictionary["city"] = "Tokio"
+dictionary = {21: "Helga", 22: "Willy"}
+dictionary[23] = "John"
 print(dictionary["name"])
 
-my_set={2, 2, 3, 3} # my_set = set()
-my_set.add(4)
-print(4 in my_set) # True
+my_set={1, 3} # my_set = set()
+my_set.add(7)
+print(7 in my_set) # True
 
 #### Null safety
+# Warning! No optional chaining
 name = print('')
 if (name): # name is None
     print(name) # won't be printed
 
 #### Functions
-def double(number):
+def multiply(number):
     return number * 3
-double(2)
-double(number=2)
+multiply(2)
 
 #### Conditions
 # (and, or, not); (==, !=);  (True, False)
@@ -44,20 +43,19 @@ else:
     print("C")
 
 #### Cycles
+for user in user:
+    print(user)
 while True:
     print('hmm')
     # break / continue
 
-for x in range(3):
-    print(x)
-
 #### Exceptions
 try:
-    raise Exception("Something went wrong")
+    raise Exception("No internet")
 except Exception as e:
     print(e)
 finally:
-    print('final')
+    print('Done!')
 
 #### Comparison
 print(authors == writers) # Structural comparison (true)
@@ -69,10 +67,10 @@ monmod.printNumbers()
 
 #### Enum
 from enum import Enum
-class Color(Enum):
-    RED
-    GREEN
-print(Color.RED)
+class State(Enum):
+    IDLE
+    RUNNING
+print(State.RUNNING)
 
 #### Classes
 class Person:
@@ -85,12 +83,14 @@ person = Person("John")
 person.greet()
 
 #### Anonymous class / JSON object
-# Warning! No good way found
+# Warning! It's just a dictionary
+status = {"id": 23, "message": "Wrong connection"}
+print(status["message"])
 
 #### Lambda (Anonymous function)
 # Warning! Multiline lambdas not supported
-multiply = lambda x: x * 3
-print(multiply(2))
+toUppercase = lambda text: text.upper()
+print(toUppercase("hey"))
 
 #### HTTP request/response
 import requests
