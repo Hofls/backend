@@ -92,6 +92,23 @@ person.greet()
 multiply = lambda x: x * 3
 print(multiply(2))
 
+#### HTTP request/response
+import requests
+response = requests.get("http://httpbin.org/get")
+json = response.json()
+print(json["origin"])
+
+#### Run code in parallel
+def runInParallel(*fns):
+    proc = []
+    for fn in fns:
+        p = Process(target=fn)
+        p.start()
+        proc.append(p)
+    for p in proc:
+        p.join()
+runInParallel(functA, functB)
+
 #### Naming conventions
 # Folder - advanced_query
 # File - user_repository.py
