@@ -1,6 +1,6 @@
 const https = require('https');
 
-sendTelegram("<b>bold text</b> \n nextline!");
+sendTelegram(`<b>bold text</b> \n nextline! \n <a href="https://example.com">Link!</a>`);
 
 // https://core.telegram.org/bots/api#html-style
 function sendTelegram(message) {
