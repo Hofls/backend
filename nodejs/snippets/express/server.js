@@ -4,13 +4,14 @@ module.exports = {
 
     run: function() {
         const app = express();
+        app.use(express.json());
 
         app.get("/", (req, res) => {
-            res.send("Now try to send POST request");
+            res.send("Try to send POST request");
         });
 
         app.post("/", (req, res) => {
-            res.send("Let's go!");
+            res.send(req.body); // if body is empty, try to set "Content-Type: application/json" on client
         });
 
         app.listen(8080, () =>
