@@ -109,6 +109,10 @@ def runInParallel(*fns):
         p.join()
 runInParallel(functA, functB)
 
+#### Package manager
+# Poetry; Files - pyproject.toml, poetry.lock
+# Pipenv; Files - Pipfile, Pipfile.lock
+
 #### Naming conventions
 # Folder - advanced_query
 # File - user_repository.py

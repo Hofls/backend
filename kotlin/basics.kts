@@ -113,6 +113,9 @@ fun helloWorld() = runBlocking {
     async {write("Hello", 400L)}
 }
 
+// Package manager
+// Gradle; Files - build.gradle
+
 // Naming conventions
 // Folder - advanced/query
 // File - UserRepository.kts
