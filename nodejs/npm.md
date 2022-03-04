@@ -1,0 +1,1 @@
+For npm look at `frontend` repository
