@@ -1,0 +1,8 @@
+{
+  "scripts": {
+    "launch": "node src/main.js"
+  },
+  "dependencies": {
+    "riemann": "2.1.0"
+  }
+}
