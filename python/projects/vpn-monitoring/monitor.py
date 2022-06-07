@@ -6,7 +6,7 @@ import os
 import time
 
 def isResourceAvailable(container):
-    result = os.popen(f"docker exec {container} curl https://example.com").read()
+    result = os.popen(f"docker exec {container} curl --max-time 15 https://example.com").read()
     return "Example Domain" in result
 
 def vpnIsWorking():
