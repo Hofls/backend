@@ -18,7 +18,7 @@ def vpnIsWorking():
 
 def restartContainers():
     os.system("docker restart fortivpn")
-    time.sleep(10)
+    time.sleep(30)
     os.system("docker restart crawler")
     os.system("docker restart notifier")
 
