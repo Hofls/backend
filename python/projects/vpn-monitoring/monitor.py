@@ -6,8 +6,11 @@ import os
 import time
 
 def isResourceAvailable(container):
-    result = os.popen(f"docker exec {container} curl --max-time 15 https://example.com").read()
-    return "Example Domain" in result
+    for x in range (0, 3):
+        result = os.popen(f"docker exec {container} curl --max-time 15 https://example.com").read()
+        if ("Example Domain" in result):
+            return True
+    return False
 
 def vpnIsWorking():
     if (not isResourceAvailable("crawler")):
