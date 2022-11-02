@@ -7,6 +7,7 @@
 #### CLI
 * Download the project - `go get` / `git clone`
     * Project should be located in `%GOPATH%/src`, e.g. `C:\Users\Hofls\go\src\vcs.itech.sp\mtk\slnv`
+* Download all dependencies - `go get -t -d ./...`
 * Execute all tests - `go test ./...`
 * Run project - `go run main.go`
 * Build project - `go install`, executable appears in `%GOPATH%/bin`
