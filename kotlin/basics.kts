@@ -9,7 +9,7 @@ val isReady = true
 // Variable in string
 println("Hello $userName")
 
-// Collections
+// Collections (Data structures)
 var list = ArrayList<String>()
 list.add("Hey")
 list.contains("Hey")
@@ -37,7 +37,7 @@ fun multiply(number: Int): Int {
 multiply(2)
 
 // Conditions
-// # (and, or, !); (&&, ||, !); (==, ===, !=);  (true, false)
+// (and, or, !); (&&, ||, !); (==, ===, !=);  (true, false)
 if (true) {
     println("A")
 } else {

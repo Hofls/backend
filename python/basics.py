@@ -9,14 +9,14 @@ isReady = True
 #### Variable in string
 print(f"Hello {userName}")
 
-#### Collections
+#### Collections (Data structures)
 list = ['Lets', 'Go']
 list.append('Hey')
 print('Hey' in list) # True
 
 dictionary = {21: "Helga", 22: "Willy"}
 dictionary[23] = "John"
-print(dictionary["name"])
+print(dictionary[21])
 
 my_set={1, 3} # my_set = set()
 my_set.add(7)
@@ -43,7 +43,7 @@ else:
     print("C")
 
 #### Cycles
-for user in user:
+for user in users:
     print(user)
 while True:
     print('hmm')
