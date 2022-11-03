@@ -96,11 +96,29 @@ var toUppercase = func(txt string) string {
 fmt.Println(toUppercase("hey"))
 
 // HTTP request/response
-res, err := http.Get("http://httpbin.org/get")
-TODO
+res, _ := http.Get("http://httpbin.org/get")
+body, _ := ioutil.ReadAll(res.Body)
+fmt.Println(string(body))
+
+var data map[string]interface{}
+_ = json.Unmarshal([]byte(body), &data)
+fmt.Println(data["origin"])
 
 // Run code in parallel
-TODO
+func runInParallel(functions ...func()) {
+	var waitGroup sync.WaitGroup
+	waitGroup.Add(len(functions))
+
+	defer waitGroup.Wait()
+
+	for _, function := range functions {
+		go func(copy func()) {
+			defer waitGroup.Done()
+			copy()
+		}(function)
+	}
+}
+runInParallel(functA, functB)
 
 // Package manager - Go has default one
 
