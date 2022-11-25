@@ -1,6 +1,7 @@
 const express = require("express");
 
 // Warning! Express is able to serve only one request at a time (if it takes 10 seconds, all other requests have to wait)
+// Bad workaround (return without waiting for results) - call async function without await, then res.send();
 module.exports = {
 
     run: function() {
