@@ -47,6 +47,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer rows.Close()
 	for rows.Next() {
 		var c Customer
 		if err := rows.Scan(&c.Id, &c.Name, &c.Rank); err != nil {
