@@ -13,7 +13,7 @@ async function runClient() {
         ssl: false,
     });
 
-    client.connect();
+    await client.connect();
 
     // INSERT
     await client.query('INSERT INTO customer(name, rank) VALUES($1, $2)', ['John', 3]);
@@ -31,5 +31,5 @@ async function runClient() {
         console.log(row);
     }
 
-    client.end();
+    await client.end();
 }
